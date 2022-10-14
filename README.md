@@ -1,4 +1,3 @@
 <h1> Журавлев Ярослав https://t.me/rioleo </h1> 
 
-
-![hippo](https://i.gifer.com/NxfN.mp4)
+![hippo](https://media3.giphy.com/media/aUovxH8Vf9qDu/giphy.gif)
