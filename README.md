@@ -1,3 +1,3 @@
 <h1> Журавлев Ярослав https://t.me/rioleo </h1> 
 
-![hippo](https://i.gifer.com/NxfN.gif)
+![dancingDog](http://text-image.ru/_nw/76/06190464.gif)
