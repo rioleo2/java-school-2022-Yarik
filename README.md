@@ -2,3 +2,4 @@
 
 ![dancingDog](http://text-image.ru/_nw/76/06190464.gif)
 
+![ascii](ascii.gif)
