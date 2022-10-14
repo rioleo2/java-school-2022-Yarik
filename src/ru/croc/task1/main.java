@@ -1,4 +1,4 @@
-package task1;
+package src.ru.croc.task1;
 
 import java.util.Scanner;
 
