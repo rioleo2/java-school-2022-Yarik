@@ -22,7 +22,7 @@ public class Main {
     }
 
     public static void initArray(int[] array, int sizeOFArray){
-
+        System.out.println("Введите элементы массива: ");
         Scanner keyboard = new Scanner(System.in);
         for (int i = 0; i < sizeOFArray; i++){
             array[i] = keyboard.nextInt();
@@ -67,23 +67,30 @@ public class Main {
 
         int tempOne = 0; //вспомогательные переменные для перемены чисел в массиве
         int tempTwo = 0;
+        boolean ifMinimumFound = false;
+        boolean ifMaximumFound = false;
         for(int i = 0; i < sizeOFArray; i++){
-            if (array[i] == min){
+            if (array[i] == min && !ifMinimumFound){
                 tempOne = array[i];
                 array[i] = array[0];
                 array[0] = tempOne;
+                ifMinimumFound = true;
+            }
+            if (array[i] == max && !ifMaximumFound){
+                tempTwo = array[i];
+                array[i] = array[sizeOFArray-1];
+                array[sizeOFArray-1] = tempTwo;
+                ifMaximumFound = true;
+                i--;  //Данная итерация назад необходима для случая, когда максимум
+                      //Нашелся раньше минимума, а минимум находится в самом конце
+                      //Например в варианте [6, 28, 17, 1]. После того, как мы переставили макимальный элемент
+                      //без i-- мы бы пропустили перестановку минимального элемента
+            }
+            if (ifMinimumFound && ifMaximumFound){
                 break;
             }
         }
 
-    for (int i = 0; i < sizeOFArray; i++){
-            if (array[i] == max){
-                tempTwo = array[i];
-                array[i] = array[sizeOFArray-1];
-                array[sizeOFArray-1] = tempTwo;
-                break;
-            }
-        }
         return array;
     }
 
@@ -97,7 +104,8 @@ public class Main {
 
         int[] array = new int[sizeOfArray];
 
-        initRandomArray(array, sizeOfArray);
+        //initRandomArray(array, sizeOfArray);
+        initArray(array, sizeOfArray);
 
         System.out.println("Изначальный массив: ");
         printArray(array, sizeOfArray);

@@ -11,11 +11,11 @@ public class PureCode {
     /* insideBlockComment
        insideBlockComment */
 
-    enum State{codeWithoutComments, insideLineComment, insideBlockComment, insideBlockCommentNoNewLine};
+    enum State{CODE_WITHOUT_COMMENTS, INSIDE_LINE_COMMENT, INSIDE_BLOCK_COMMENT, INSIDE_BLOCK_COMMENT_NO_NEW_LINE};
 
     public static String cleanCode(String code){
 
-        State state = State.codeWithoutComments;
+        State state = State.CODE_WITHOUT_COMMENTS;
 
         Scanner codeS = new Scanner(code);
         String resultCode = "";
@@ -25,13 +25,13 @@ public class PureCode {
             String codeNextChar = codeS.next();
             switch (state){
 
-                case codeWithoutComments:
+                case CODE_WITHOUT_COMMENTS:
                     if (codeNextChar.equals("/") && codeS.hasNext()){
                         String codeSecondNextChar = codeS.next();
                         if (codeSecondNextChar.equals("/"))
-                            state = State.insideLineComment;
+                            state = State.INSIDE_LINE_COMMENT;
                         else if (codeSecondNextChar.equals("*")) {
-                            state = State.insideBlockCommentNoNewLine;
+                            state = State.INSIDE_BLOCK_COMMENT_NO_NEW_LINE;
                         }
                         else
                             resultCode += codeNextChar + codeSecondNextChar;
@@ -40,24 +40,24 @@ public class PureCode {
                         resultCode += codeNextChar;
                     break;
 
-                case insideLineComment:
+                case INSIDE_LINE_COMMENT:
                     if (codeNextChar.equals("\n")){
-                        state = State.codeWithoutComments;
+                        state = State.CODE_WITHOUT_COMMENTS;
                         resultCode += "\n";
                     }
                     break;
 
-                case insideBlockCommentNoNewLine:
+                case INSIDE_BLOCK_COMMENT_NO_NEW_LINE:
                     if (codeNextChar.equals("\n")) {
                         resultCode += "\n";
-                        state = State.insideBlockComment;
+                        state = State.INSIDE_BLOCK_COMMENT;
                     }
 
-                case insideBlockComment:
+                case INSIDE_BLOCK_COMMENT:
                     while (codeNextChar.equals("*") && codeS.hasNext()){
                         String codeSecondNextChar = codeS.next();
                         if (codeSecondNextChar.equals("/")){
-                            state = State.codeWithoutComments;
+                            state = State.CODE_WITHOUT_COMMENTS;
                             break;
                         }
                     }
