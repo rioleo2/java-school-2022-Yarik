@@ -17,5 +17,21 @@ class AnnotatedImage {
     public Annotation[] getAnnotations() {
         return this.annotations;
     }
+
+    public Annotation findByPoint(int x, int y) {
+        for (Annotation annotation: annotations) {
+            if (annotation.getFigure().checkIfPointIsInSelection(x,y))
+                return annotation;
+        }
+        return null;
+    }
+
+    public Annotation findByLabel(String label) {
+        for (Annotation annotation: annotations) {
+            if (annotation.containsLabel(label))
+                return annotation;
+        }
+        return null;
+    }
 }
 
