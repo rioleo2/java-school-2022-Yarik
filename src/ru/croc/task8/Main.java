@@ -19,11 +19,10 @@ public class Main {
                                                                                 //(\s+ - метасимвол пробела или
                                                                                 //последовательности пробелов)
             }
+            System.out.println("Number of words in file: " + numberOfWords);
         }
         catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
-
-        System.out.println("Number of words in file: " + numberOfWords);
     }
 }
